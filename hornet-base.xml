@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <sim>
+ 
+    <author>BARANGER Emmanuel (3D)</author>
+    <aircraft-version>0.1</aircraft-version>
+    <status>Alpha</status>
+   
+    <fuel-fraction>0.8</fuel-fraction>
+  
+    <startup>
+      <splash-texture>Aircraft/Hornet/hornet-splash.rgb</splash-texture>
+    </startup>
+
+    <model>
+      <path>Aircraft/Hornet/Models/hornet.xml</path>
+    </model>
+
+    <sound>
+      <path>Aircraft/Hornet/Sounds/hornet-sound.xml</path>
+    </sound>
+
+    <hud>
+      <enable3d>false</enable3d>
+    </hud>
+
+    <virtual-cockpit>true</virtual-cockpit>
+    <allow-toggle-cockpit>true</allow-toggle-cockpit>
+
+    <view n="0">
+      <internal archive="y">true</internal>
+      <name>Cockpit</name>
+      <type>lookfrom</type>
+      <internal type="bool">true</internal>
+      <config>
+        <x-offset-m type="double">  0.000 </x-offset-m>	<!-- Right -->
+        <y-offset-m type="double">  0.315 </y-offset-m>	<!-- Up    -->
+        <z-offset-m type="double"> -0.579 </z-offset-m>	<!-- Back  -->
+      </config>
+    </view>
+
+    <chase-distance-m type="double" archive="y">-30.00</chase-distance-m>
+
+    <current-view>
+      <field-of-view>60.0</field-of-view>
+    </current-view>
+
+    <multiplay>
+      <chat_display>1</chat_display>
+    </multiplay>
+
+  </sim>
+
+  <controls>
+    <engines>
+      <engine n="0">
+        <magnetos>3</magnetos>
+      </engine>
+    </engines>
+  </controls>
+
+<!--
+  <engines>
+    <engine n="0">
+      <engine-num type="int">0</engine-num>
+      <rpm>500</rpm>
+      <running>true</running>
+    </engine>
+  </engines>
+
+  <input>
+    <keyboard include="Nasal/hornet-keyboard.xml"/>
+  </input>
+ 
+  <nasal>
+    <noratlas>
+      <file>Aircraft/Hornet/Nasal/doors.nas</file>
+    </noratlas>
+  </nasal>
+-->
+
+</PropertyList>
+
