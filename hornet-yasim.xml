@@ -32,7 +32,7 @@
 	  sharedflaphinge="1"
 	  rellenflaphinge="0.00"
 	  delta3="0"
-	  delta=".1075"
+	  delta=".8"
 	  pitch-a="10"
 	  pitch-b="15"
 	  flapmin="-10"
@@ -83,12 +83,12 @@
 
 
 	<rotorgear
-	  max-power-engine="3"
+	  max-power-engine="2"
 	  rotorgear-friction="0.1"
 	  engine-prop-factor="0.1"
-	  engine-accel-limit="4"
-	  yasimdragfactor="23"
-	  yasimliftfactor="385"
+	  engine-accel-limit="16"
+	  yasimdragfactor="10"
+	  yasimliftfactor="300"
 >
 		<control-input axis="/controls/rotor/handstart" control="ROTORGEARENGINEON"/>
 		<control-input axis="/controls/rotor/reltarget" control="ROTORRELTARGET"
@@ -96,13 +96,18 @@
 					   dst0="0.0" dst1="1.0"/>
 	</rotorgear>
 
-
 	<propeller radius="0.810"
-	   cruise-speed="70" cruise-rpm="2150"
-           cruise-alt="8000" cruise-power="49"
-           takeoff-power="55" takeoff-rpm="2300"
-           eng-power="65" eng-rpm="2500"
+	   cruise-speed="80" cruise-rpm="2900"
+           cruise-alt="8000" cruise-power="25"
+           takeoff-power="30" takeoff-rpm="3035"
+           gear-ratio="0.39" 
            x="-1.95" y="0" z="0.07" mass="88" moment="0.1">
+		<piston-engine
+               eng-power="39"
+               eng-rpm="6800"
+               displacement="26.64"
+               compression="6.3"
+		/>
 		<actionpt x="-2.28" y="0" z="-0.09"/>
 		<control-input axis="/controls/engines/engine[0]/throttle" control="THROTTLE"/>
 		<control-input axis="/controls/engines/engine[0]/starter" control="STARTER"/>
@@ -112,7 +117,8 @@
 
 
 
-	<cockpit x="-3.579" y="0" z="0.315"/>
+
+	<cockpit x="-1.579" y="0" z="0.315"/>
 
 	<fuselage ax="-0.5" ay="0" az="-0.16" bx="-1.63" by="0" bz="-0.16"
 			  width="0.65" taper="0.5" midpoint="0.5"/>
@@ -135,41 +141,39 @@
 	</hstab>
 
 	<!-- noze gear 1.624-->
-	<gear x="-.33" y="0.000" z="-1.190" compression="0.1" spring="2.2" damp="1.0" sfric=".8" dfric=".6">
-                <control-input axis="/controls/flight/rudder" control="STEER" square="false"/>
+	<gear x="-.33" y="0.000" z="-1.220" compression="0.1" spring="1.5" damp="0.75" sfric=".8" dfric=".6">
+                <control-input axis="/controls/flight/rudder" control="STEER" square="false"
+					   src0="-1.0" src1="1.0"
+					   dst0="-0.2" dst1="0.2"/>
+
 		<control-input axis="/controls/gear/brake-left" control="BRAKE" split="true"/>
 		<control-input axis="/controls/gear/brake-parking" control="BRAKE" split="true"/>
 	</gear>
 
-	<!-- left gear .138-->
-	<gear x="-1.64" y="0.879" z="-1.224" compression="0.1" spring="2.2" damp="1.0" sfric=".3" dfric=".2">
+	<!-- left gear .-->
+	<gear x="-1.64" y="0.879" z="-1.254" compression="0.1" spring="3.5" damp="0.75" sfric=".5" dfric=".4" initial-load="0.8">
 		<control-input axis="/controls/gear/brake-left" control="BRAKE" split="true"/>
 		<control-input axis="/controls/gear/brake-parking" control="BRAKE" split="true"/>
 	</gear>
 
-	<!-- right gear -->
-	<gear x="-1.64" y="-0.879" z="-1.224" compression="0.1" spring="2.2" damp="1.0" sfric=".3" dfric=".2">
+	<!-- right gear s=3.2 d=0.5 sf=.4 df=.2-->
+	<gear x="-1.64" y="-0.879" z="-1.254" compression="0.1" spring="3.5" damp="0.75" sfric=".5" dfric=".4" initial-load="0.8">
 		<control-input axis="/controls/gear/brake-right" control="BRAKE" split="true"/>
 		<control-input axis="/controls/gear/brake-parking" control="BRAKE" split="true"/>
 	</gear>
 
-	<!-- tail gear 
-        <gear x="-1.382" y="0.000" z="-1.029" compression="0.1" spring="3" damp="1.0" sfric="0.8" dfric="0.6">
-          <control-input axis="/controls/gear/brake-right" control="BRAKE" split="true"/>
-          <control-input axis="/controls/gear/brake-left" control="BRAKE" split="true"/>
-          <control-input axis="/controls/gear/brake-parking" control="BRAKE" split="true"/>
-        </gear>
-	-->
+	<!-- tail gear -->
+    <gear x="-3.15" y="0.000" z="-1.029" compression="0.1" spring="1" damp="1.0" sfric="0.8" dfric="0.6" ignored-by-solver="1">
+    </gear>
 
 
 	<tank x="-1.84" y="0.0" z="-.33" capacity="5"/>
 	<!-- work around bug in native-fdm.cxx:184 -->
 	<tank x="0" y="0" z="0" capacity="0"/>
 
-	<!--<ballast x="-1.95" y="0.0" z="0.07" mass="88"/> -->
-	<!-- engine -->
 	<ballast x="-1.12" y="0.0" z="-0.19" mass="225"/>
 	<!-- pilot -->
+
 	<ballast x="-1.55" y="0.0" z="0.15" mass="80"/>
 	<!-- to get the cg at the right position -->
 

@@ -4,7 +4,7 @@
 
   <sim>
  
-    <author>BARANGER Emmanuel (3D)</author>
+    <author>BARANGER Emmanuel, SHOEBRIDGE Don (3D), JUSTUS Maik (FDM)</author>
     <aircraft-version>0.1</aircraft-version>
     <status>Alpha</status>
    
@@ -12,6 +12,7 @@
   
     <startup>
       <splash-texture>Aircraft/Hornet/hornet-splash.rgb</splash-texture>
+      <splash-title>http://www.gdt-systems.com</splash-title>
     </startup>
 
     <model>
@@ -31,21 +32,20 @@
 
     <view n="0">
       <internal archive="y">true</internal>
-      <name>Cockpit</name>
-      <type>lookfrom</type>
-      <internal type="bool">true</internal>
       <config>
-        <x-offset-m type="double">  0.000 </x-offset-m>	<!-- Right -->
-        <y-offset-m type="double">  0.315 </y-offset-m>	<!-- Up    -->
-        <z-offset-m type="double"> -0.579 </z-offset-m>	<!-- Back  -->
+        <x-offset-m archive="y">  0.000 </x-offset-m>	<!--right-->
+        <y-offset-m archive="y">  0.377 </y-offset-m>	<!--up-->
+        <z-offset-m archive="y"> -0.553 </z-offset-m>	<!--back-->
       </config>
     </view>
 
-    <chase-distance-m type="double" archive="y">-30.00</chase-distance-m>
+    <view n="5">
+      <config>
+        <default-field-of-view-deg> 20 </default-field-of-view-deg>
+      </config>
+    </view>
 
-    <current-view>
-      <field-of-view>60.0</field-of-view>
-    </current-view>
+    <chase-distance-m type="double" archive="y">-10.0</chase-distance-m>
 
     <multiplay>
       <chat_display>1</chat_display>
@@ -60,26 +60,6 @@
       </engine>
     </engines>
   </controls>
-
-<!--
-  <engines>
-    <engine n="0">
-      <engine-num type="int">0</engine-num>
-      <rpm>500</rpm>
-      <running>true</running>
-    </engine>
-  </engines>
-
-  <input>
-    <keyboard include="Nasal/hornet-keyboard.xml"/>
-  </input>
- 
-  <nasal>
-    <noratlas>
-      <file>Aircraft/Hornet/Nasal/doors.nas</file>
-    </noratlas>
-  </nasal>
--->
 
 </PropertyList>
 

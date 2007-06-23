@@ -5,6 +5,22 @@
  <path>hornet2.ac</path>
 
   <animation>
+    <object-name>tete</object-name>
+    <object-name>cou</object-name>
+    <object-name>torse</object-name>
+    <object-name>brasG</object-name>
+    <object-name>brasD</object-name>
+    <object-name>avantbrasG</object-name>
+    <object-name>avantbrasD</object-name>
+    <object-name>mainG</object-name>
+    <object-name>mainD</object-name>
+    <object-name>cuisseG</object-name>
+    <object-name>cuisseD</object-name>
+    <object-name>jambeG</object-name>
+    <object-name>jambeD</object-name>
+    <object-name>piedgauche</object-name>
+    <object-name>pieddroit</object-name>
+
     <object-name>moteur0</object-name>
     <object-name>moteur1</object-name>
     <object-name>moteur2</object-name>
@@ -89,6 +105,20 @@
     <object-name>propblur</object-name>
     <object-name>propdisc1</object-name>
     <object-name>propblur1</object-name>
+  </animation>
+
+  <!-- Pilote invisible depuis le cockpit -->
+  <animation>
+    <type>select</type>
+    <object-name>tete</object-name>
+    <object-name>cou</object-name>
+    <object-name>torse</object-name>
+    <condition>
+      <greater-than>
+        <property>sim/current-view/view-number</property>
+        <value>0</value>
+      </greater-than>
+    </condition>
   </animation>
 
   <!-- Manette moteur -->
@@ -183,7 +213,7 @@
     <object-name>pale2</object-name>
     <object-name>rotor2</object-name>
     <object-name>rotor3</object-name>
-    <property>rotors/main/tilt/pitch-deg</property> -->
+    <property>rotors/main/tilt/pitch-deg</property>
     <factor> -1 </factor>
     <center>
       <x-m> -0.157 </x-m>
@@ -401,7 +431,7 @@
     <object-name>manche1</object-name>
     <object-name>manche2</object-name>
     <object-name>basmanche</object-name>
-    <property>rotors/main/tilt/pitch-deg</property> -->
+    <property>rotors/main/tilt/pitch-deg</property>
     <factor> 1 </factor>
     <center>
       <x-m> -0.838 </x-m>
@@ -418,7 +448,7 @@
   <animation>
     <type>rotate</type>
     <object-name>relais0</object-name>
-    <property>rotors/main/tilt/pitch-deg</property> -->
+    <property>rotors/main/tilt/pitch-deg</property>
     <factor> 1 </factor>
     <center>
       <x-m> -0.399 </x-m>
@@ -435,7 +465,7 @@
   <animation>
     <type>rotate</type>
     <object-name>relaisG</object-name>
-    <property>rotors/main/tilt/pitch-deg</property> -->
+    <property>rotors/main/tilt/pitch-deg</property>
     <factor> 1 </factor>
     <center>
       <x-m> -0.136 </x-m>
@@ -452,7 +482,7 @@
   <animation>
     <type>translate</type>
     <object-name>axeHG</object-name>
-    <property>rotors/main/tilt/pitch-deg</property> -->
+    <property>rotors/main/tilt/pitch-deg</property>
     <factor> -0.002 </factor>
     <center>
       <x-m> -0.058 </x-m>
@@ -469,7 +499,7 @@
   <animation>
     <type>translate</type>
     <object-name>axeBG</object-name>
-    <property>rotors/main/tilt/pitch-deg</property> -->
+    <property>rotors/main/tilt/pitch-deg</property>
     <factor> 0.002 </factor>
     <center>
       <x-m> -0.243 </x-m>
@@ -486,7 +516,7 @@
   <animation>
     <type>rotate</type>
     <object-name>relaisD</object-name>
-    <property>rotors/main/tilt/pitch-deg</property> -->
+    <property>rotors/main/tilt/pitch-deg</property>
     <factor> -1 </factor>
     <center>
       <x-m> -0.136 </x-m>
@@ -503,7 +533,7 @@
   <animation>
     <type>translate</type>
     <object-name>axeHD</object-name>
-    <property>rotors/main/tilt/pitch-deg</property> -->
+    <property>rotors/main/tilt/pitch-deg</property>
     <factor> 0.002 </factor>
     <center>
       <x-m> -0.058 </x-m>
@@ -520,7 +550,7 @@
   <animation>
     <type>translate</type>
     <object-name>axeBD</object-name>
-    <property>rotors/main/tilt/pitch-deg</property> -->
+    <property>rotors/main/tilt/pitch-deg</property>
     <factor> -0.002 </factor>
     <center>
       <x-m> -0.243 </x-m>
@@ -723,8 +753,8 @@
   <animation>
     <type>translate</type>
     <object-name>axeG0</object-name>
-    <property>gear/gear[1]/compression-norm</property>
-    <factor> 0.2 </factor>
+    <property>gear/gear[1]/compression-m</property>
+    <factor> 2 </factor>
     <center>
       <x-m> -0.136 </x-m>
       <y-m> -0.478 </y-m>
@@ -743,8 +773,8 @@
     <object-name>axeG2</object-name>
     <object-name>moyeuG</object-name>
     <object-name>roueG</object-name>
-    <property>gear/gear[1]/compression-norm</property>
-    <factor> 8 </factor>
+    <property>gear/gear[1]/compression-m</property>
+    <factor> 80 </factor>
     <center>
       <x-m> -0.499 </x-m>
       <y-m> -0.049 </y-m>
@@ -760,8 +790,8 @@
   <animation>
     <type>translate</type>
     <object-name>axeD0</object-name>
-    <property>gear/gear[2]/compression-norm</property>
-    <factor> 0.2 </factor>
+    <property>gear/gear[2]/compression-m</property>
+    <factor> 2 </factor>
     <center>
       <x-m> -0.136 </x-m>
       <y-m>  0.478 </y-m>
@@ -780,8 +810,8 @@
     <object-name>axeD2</object-name>
     <object-name>moyeuD</object-name>
     <object-name>roueD</object-name>
-    <property>gear/gear[2]/compression-norm</property>
-    <factor> 8 </factor>
+    <property>gear/gear[2]/compression-m</property>
+    <factor> 80 </factor>
     <center>
       <x-m> -0.499 </x-m>
       <y-m>  0.049 </y-m>
@@ -877,6 +907,123 @@
       <x-m>  1.382 </x-m>
       <y-m>  0.000 </y-m>
       <z-m> -0.972 </z-m>
+    </center>
+    <axis>
+      <x>  0.000 </x>
+      <y> -1.000 </y>
+      <z>  0.000 </z>
+    </axis>
+  </animation>
+
+  <!-- Anmations du pilote -->
+  <animation>
+    <type>translate</type>
+    <object-name>avantbrasG</object-name>
+    <object-name>mainG</object-name>
+    <property>/controls/engines/engine[0]/throttle</property>
+    <factor> 0.10 </factor>
+    <axis>
+      <x> -1.000 </x>
+      <y>  0.000 </y>
+      <z>  0.000 </z>
+    </axis>
+  </animation>
+
+  <!-- Manette moteur -->
+  <animation>
+    <type>rotate</type>
+    <object-name>brasG</object-name>
+    <property>/controls/engines/engine[0]/throttle</property>
+    <factor> 20.15 </factor>
+    <center>
+      <x-m> -0.464 </x-m>
+      <y-m> -0.178 </y-m>
+      <z-m>  0.037 </z-m>
+    </center>
+    <axis>
+      <x> 0.000 </x>
+      <y> 1.000 </y>
+      <z> 0.000 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>piedgauche</object-name>
+    <property>controls/flight/rudder</property>
+    <factor> 20 </factor>
+    <center>
+      <x-m> -1.250 </x-m>
+      <y-m> -0.153 </y-m>
+      <z-m> -0.691 </z-m>
+    </center>
+    <axis>
+      <x> 0.00 </x>
+      <y> 1.00 </y>
+      <z> 0.00 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>pieddroit</object-name>
+    <property>controls/flight/rudder</property>
+    <factor> 20 </factor>
+    <center>
+      <x-m> -1.250 </x-m>
+      <y-m>  0.153 </y-m>
+      <z-m> -0.691 </z-m>
+    </center>
+    <axis>
+      <x>  0.00 </x>
+      <y> -1.00 </y>
+      <z>  0.00 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>tete</object-name>
+    <property>controls/flight/rudder</property>
+    <factor> 20 </factor>
+    <center>
+      <x-m> -0.445 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.234 </z-m>
+    </center>
+    <axis>
+      <x>  0.00 </x>
+      <y>  0.00 </y>
+      <z> -1.00 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>tete</object-name>
+    <property>rotors/main/tilt/roll-deg</property>
+    <factor> 1 </factor>
+    <center>
+      <x-m> -0.445 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.234 </z-m>
+    </center>
+    <axis>
+      <x> 1.000 </x>
+      <y> 0.000 </y>
+      <z> 0.000 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>tete</object-name>
+    <property>rotors/main/tilt/pitch-deg</property>
+    <factor> -1 </factor>
+    <center>
+      <x-m> -0.445 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.234 </z-m>
     </center>
     <axis>
       <x>  0.000 </x>

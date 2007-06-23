@@ -59,7 +59,6 @@ var crash = func {
 		setprop("rotors/main/blade[1]/flap-deg", -50);
 		setprop("rotors/main/blade[0]/incidence-deg", -30);
 		setprop("rotors/main/blade[1]/incidence-deg", -20);
-		rotor.setValue(0);
 		stall_filtered.setValue(stall_val = 0);
 	} else {
 		# uncrash (for replay)
@@ -68,7 +67,6 @@ var crash = func {
 			setprop("rotors/main/blade[" ~ i ~ "]/flap-deg", 0);
 			setprop("rotors/main/blade[" ~ i ~ "]/incidence-deg", 0);
 		}
-		rotor.setValue(1);
 	}
 }
 
@@ -195,7 +193,6 @@ setlistener("/sim/signals/fdm-initialized", func {
 
 	setlistener("sim/crashed", func {
 		cprint("31;1", "crashed ", cmdarg().getValue());
-		turbine_timer.stop();
 		if (cmdarg().getBoolValue()) {
 			crash(crashed = 1);
 		}
