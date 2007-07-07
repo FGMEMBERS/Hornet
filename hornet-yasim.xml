@@ -174,8 +174,13 @@
 	<ballast x="-1.12" y="0.0" z="-0.19" mass="225"/>
 	<!-- pilot -->
 
-	<ballast x="-1.55" y="0.0" z="0.15" mass="80"/>
-	<!-- to get the cg at the right position -->
+	<ballast x="-1.55" y="-0.25" z=" 0.15" mass="13.33"/>
+	<ballast x="-1.55" y=" 0.25" z=" 0.15" mass="13.33"/>
+	<ballast x="-1.55" y=" 0.0" z=" 4.0" mass="13.33"/>
+	<ballast x="-1.55" y=" 0.0" z="-3.7" mass="13.33"/>
+	<ballast x=" 0.85" y=" 0.0" z=" 0.15" mass="13.33"/>
+	<ballast x="-3.95" y=" 0.0" z=" 0.15" mass="13.33"/>
+	<!-- to get the cg and the inertia tensor correct -->
 
 </airplane>
 
