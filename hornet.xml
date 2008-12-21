@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <PropertyList>
 
@@ -96,7 +96,7 @@
     <object-name>rotor3</object-name>
     <object-name>rotor4</object-name>
 <!-- <property>rotors/main/roll-deg</property> -->
-    <property>rotors/main/tilt/roll-deg</property> -->
+    <property>rotors/main/tilt/roll-deg</property>
     <factor>  1 </factor>
     <axis>
       <x1-m> -0.190 </x1-m>
@@ -116,7 +116,7 @@
     <object-name>rotor2</object-name>
     <object-name>rotor3</object-name>
 <!-- <property>rotors/main/yaw-deg</property> -->
-    <property>rotors/main/tilt/pitch-deg</property> -->
+    <property>rotors/main/tilt/pitch-deg</property>
     <factor> 1 </factor>
     <center>
       <x-m> -0.157 </x-m>
