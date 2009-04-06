@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ************************************************************************
+  Autogire Hornet
+  June 2007 BARANGER Emmanuel
+  ************************************************************************
+-->
+
+<PropertyList include="hornet-base.xml">
+
+  <sim>
+
+    <description>Autogiro Hornet (YASim)</description>
+    <author>Emmanuel Baranger, Don Shoebridge, Maik Justus (FDM)</author>
+    <status>early-production</status>
+    <flight-model>yasim</flight-model>
+    <aero>hornet-yasim</aero>
+
+  </sim>
+
+</PropertyList>
+

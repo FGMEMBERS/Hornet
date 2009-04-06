@@ -1,15 +1,28 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <PropertyList>
 
-   <key n="100">
+  <key n="100">
     <name>d</name>
     <desc>Canopy</desc>
     <binding>
-     <command>nasal</command>
-     <script>globals.stilleto.doorsystem.crewexport();</script>
+      <command>nasal</command>
+      <script>globals.stilleto.doorsystem.crewexport();</script>
     </binding>
-   </key>
+  </key>
+
+  <key n="110">
+    <name>n</name>
+    <desc>Rotate rotor by hand</desc>
+    <binding>
+    <command>nasal</command>
+    <script>
+      setprop("/controls/rotor/handstart", 1);
+      setprop("/controls/rotor/reltarget", 0.3);
+      settimer(func { setprop("/controls/rotor/reltarget",0) }, 8);
+    </script>
+    </binding>
+  </key>
 
 </PropertyList>
 
