@@ -7,29 +7,27 @@
   <nasal>
     <load>
       var livery_update = aircraft.livery_update.new("Aircraft/Hornet/Models/Liveries", 10);
+
+      var self = cmdarg();
+
+      var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+      var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+      
+      var crew_door = self.getNode("instrumentation/doors/crew/position-norm", 1);
+      var passenger_door = self.getNode("instrumentation/doors/passenger/position-norm", 1);
+    
+      crew_door.alias(float_0);
+      passenger_door.alias(float_1);
     </load>
+
     <unload>
       livery_update.stop();
+      crew_door.unalias();
+      passenger_door.unalias();
     </unload>
   </nasal>
 
   <animation>
-    <object-name>tete</object-name>
-    <object-name>cou</object-name>
-    <object-name>torse</object-name>
-    <object-name>brasG</object-name>
-    <object-name>brasD</object-name>
-    <object-name>avantbrasG</object-name>
-    <object-name>avantbrasD</object-name>
-    <object-name>mainG</object-name>
-    <object-name>mainD</object-name>
-    <object-name>cuisseG</object-name>
-    <object-name>cuisseD</object-name>
-    <object-name>jambeG</object-name>
-    <object-name>jambeD</object-name>
-    <object-name>piedgauche</object-name>
-    <object-name>pieddroit</object-name>
-
     <object-name>moteur0</object-name>
     <object-name>moteur1</object-name>
     <object-name>moteur2</object-name>
@@ -112,14 +110,6 @@
   </animation>
 
   <animation>
-    <type>noshadow</type>
-    <object-name>propdisc</object-name>
-    <object-name>propblur</object-name>
-    <object-name>propdisc1</object-name>
-    <object-name>propblur1</object-name>
-  </animation>
-
-  <animation>
     <type>material</type>
     <object-name>moteur0</object-name>
     <object-name>moteur1</object-name>
@@ -172,6 +162,8 @@
     <object-name>bidons</object-name>
     <object-name>panel</object-name>
 
+    <object-name>piedG</object-name>
+    <object-name>piedD</object-name>
     <object-name>posepied</object-name>
 
     <object-name>transfert</object-name>
@@ -227,6 +219,156 @@
 -->
   </animation>
 
+  <effect>
+    <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
+    <object-name>moteur0</object-name>
+    <object-name>moteur1</object-name>
+    <object-name>moteur2</object-name>
+    <object-name>moteur3</object-name>
+    <object-name>moteur4</object-name>
+    <object-name>moteur5</object-name>
+    <object-name>throttle</object-name>
+
+    <object-name>axeA1</object-name>
+    <object-name>axeA2</object-name>
+    <object-name>axeA3</object-name>
+    <object-name>axeA4</object-name>
+    <object-name>roueA</object-name>
+
+    <object-name>verrinG</object-name>
+    <object-name>axeG0</object-name>
+    <object-name>axeG1</object-name>
+    <object-name>axeG2</object-name>
+    <object-name>moyeuG</object-name>
+    <object-name>roueG</object-name>
+
+    <object-name>verrinD</object-name>
+    <object-name>axeD0</object-name>
+    <object-name>axeD1</object-name>
+    <object-name>axeD2</object-name>
+    <object-name>moyeuD</object-name>
+    <object-name>roueD</object-name>
+
+    <object-name>axeB</object-name>
+    <object-name>roueB</object-name>
+
+    <object-name>rotor</object-name>
+    <object-name>pale1</object-name>
+    <object-name>pale2</object-name>
+    <object-name>rotor2</object-name>
+    <object-name>rotor3</object-name>
+    <object-name>rotor4</object-name>
+
+    <object-name>helice</object-name>
+    <object-name>moyeu</object-name>
+
+    <object-name>fuselage</object-name>
+    <object-name>fuselage2</object-name>
+    <object-name>fuselage3</object-name>
+    <object-name>fuselage4</object-name>
+    <object-name>siege</object-name>
+    <object-name>aile</object-name>
+    <object-name>direction</object-name>
+    <object-name>bidons</object-name>
+    <object-name>panel</object-name>
+
+    <object-name>piedG</object-name>
+    <object-name>piedD</object-name>
+    <object-name>posepied</object-name>
+
+    <object-name>transfert</object-name>
+    <object-name>basmanche</object-name>
+    <object-name>manche1</object-name>
+    <object-name>manche2</object-name>
+    <object-name>relais0</object-name>
+    <object-name>relaisG</object-name>
+    <object-name>axeHG</object-name>
+    <object-name>axeBG</object-name>
+    <object-name>relaisD</object-name>
+    <object-name>axeHD</object-name>
+    <object-name>axeBD</object-name>
+
+    <object-name>cableAG</object-name>
+    <object-name>cableAD</object-name>
+    <object-name>cableBG</object-name>
+    <object-name>cableBD</object-name>
+    <object-name>cableCG</object-name>
+    <object-name>cableCD</object-name>
+  </effect>
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+    <object-name>propdisc1</object-name>
+    <object-name>propblur1</object-name>
+  </animation>
+
+  <!-- Pilot -->
+  <model>
+    <path>Aircraft/Hornet/Models/Pilot/pilot.xml</path>
+    <offsets>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg>   0 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+
+  <!-- Cranking effects -->
+  <model>
+    <path>Aircraft/Hornet/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m>  0.034 </x-m>
+      <y-m>  0.199 </y-m>
+      <z-m>  0.398 </z-m>
+      <heading-deg> 90 </heading-deg>
+    </offsets>
+  </model>
+
+  <!-- Effets sur le sol -->
+  <!-- Roue avant -->
+  <model>
+    <path>Aircraft/Hornet/Models/Effects/ground/ground0.xml</path>   
+    <offsets>
+      <x-m> -1.450 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.220 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Roue gauche -->
+  <model>
+    <path>Aircraft/Hornet/Models/Effects/ground/ground1.xml</path>
+    <offsets>
+      <x-m> -0.130 </x-m>
+      <y-m> -0.879 </y-m>
+      <z-m> -1.254 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Roue droite -->
+  <model>
+    <path>Aircraft/Hornet/Models/Effects/ground/ground2.xml</path>
+    <offsets>
+      <x-m> -0.130 </x-m>
+      <y-m>  0.879 </y-m>
+      <z-m> -1.254 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Roue de queue -->
+  <model>
+    <path>Aircraft/Hornet/Models/Effects/ground/ground3.xml</path>   
+    <offsets>
+      <x-m>  1.380 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.029 </z-m>
+    </offsets>
+  </model>
+
   <!-- Altimètre -->
   <model>
     <path>Aircraft/Hornet/Models/Instruments/altimeter/altimeter.xml</path>
@@ -234,9 +376,9 @@
       <x-m> -0.968 </x-m>
       <y-m>  0.264 </y-m>
       <z-m> -0.336 </z-m>
-      <roll-deg>    0.000 </roll-deg>
-      <pitch-deg> -55.000 </pitch-deg>
-      <heading-deg> 0.000 </heading-deg>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -55 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -247,9 +389,9 @@
       <x-m> -0.917 </x-m>
       <y-m>  0.263 </y-m>
       <z-m> -0.370 </z-m>
-      <roll-deg>    0.000 </roll-deg>
-      <pitch-deg> -55.000 </pitch-deg>
-      <heading-deg> 0.000 </heading-deg>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -55 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -260,9 +402,9 @@
       <x-m> -0.867 </x-m>
       <y-m>  0.263 </y-m>
       <z-m> -0.403 </z-m>
-      <roll-deg>    0.000 </roll-deg>
-      <pitch-deg> -55.000 </pitch-deg>
-      <heading-deg> 0.000 </heading-deg>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -55 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -278,9 +420,9 @@
       <z-m> -0.566 </z-m>
     </center>
     <axis>
-      <x>  0.000 </x>
-      <y> -1.000 </y>
-      <z>  0.000 </z>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
@@ -366,9 +508,9 @@
       <z-m>  1.060 </z-m>
     </center>
     <axis>
-      <x>  0.000 </x>
-      <y> -1.000 </y>
-      <z>  0.000 </z>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
@@ -387,9 +529,9 @@
       <z-m>  1.148 </z-m>
     </center>
     <axis>
-      <x> 0.000 </x>
-      <y> 0.000 </y>
-      <z> 1.000 </z>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
     </axis>
   </animation>
 
@@ -406,9 +548,9 @@
       <z-m>  1.148 </z-m>
     </center>
     <axis>
-      <x> 0.000 </x>
-      <y> -1.000 </y>
-      <z> 0.000 </z>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
@@ -422,9 +564,9 @@
       <z-m>  1.148 </z-m>
     </center>
     <axis>
-      <x> 0.000 </x>
-      <y> 1.000 </y>
-      <z> 0.000 </z>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
@@ -445,9 +587,9 @@
       <z-m> -0.746 </z-m>
     </center>
     <axis>
-      <x> 1.000 </x>
-      <y> 0.000 </y>
-      <z> 0.000 </z>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
@@ -462,9 +604,9 @@
       <z-m> -0.746 </z-m>
     </center>
     <axis>
-      <x> 1.000 </x>
-      <y> 0.000 </y>
-      <z> 0.000 </z>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
@@ -479,9 +621,9 @@
       <z-m>  0.151 </z-m>
     </center>
     <axis>
-      <x> 1.000 </x>
-      <y> 0.000 </y>
-      <z> 0.000 </z>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
@@ -496,9 +638,9 @@
       <z-m>  0.151 </z-m>
     </center>
     <axis>
-      <x> 1.000 </x>
-      <y> 0.000 </y>
-      <z> 0.000 </z>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
@@ -584,9 +726,9 @@
       <z-m> -0.746 </z-m>
     </center>
     <axis>
-      <x> 0.000 </x>
-      <y> 1.000 </y>
-      <z> 0.000 </z>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
@@ -601,9 +743,9 @@
       <z-m> -0.746 </z-m>
     </center>
     <axis>
-      <x> 0.000 </x>
-      <y> 1.000 </y>
-      <z> 0.000 </z>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
@@ -618,9 +760,9 @@
       <z-m>  0.151 </z-m>
     </center>
     <axis>
-      <x> 1.000 </x>
-      <y> 0.000 </y>
-      <z> 0.000 </z>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
@@ -669,9 +811,9 @@
       <z-m>  0.151 </z-m>
     </center>
     <axis>
-      <x> 1.000 </x>
-      <y> 0.000 </y>
-      <z> 0.000 </z>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
@@ -764,9 +906,9 @@
       <z-m> -0.091 </z-m>
     </center>
     <axis>
-      <x> -1.000 </x>
-      <y>  0.000 </y>
-      <z>  0.000 </z>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
@@ -774,24 +916,24 @@
   <animation>
     <type>rotate</type>
     <object-name>direction</object-name>
-    <property>controls/flight/rudder</property>
-    <factor>20</factor>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 20 </factor>
     <center>
       <x-m>  1.084 </x-m>
       <y-m>  0.000 </y-m>
       <z-m> -0.944 </z-m>
     </center>
     <axis>
-      <x> 0.00 </x>
-      <y> 0.00 </y>
-      <z> 1.00 </z>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
     </axis>
   </animation>
 
   <animation>
     <type>rotate</type>
     <object-name>piedG</object-name>
-    <property>controls/flight/rudder</property>
+    <property>surface-positions/rudder-pos-norm</property>
     <factor> 20 </factor>
     <center>
       <x-m> -1.378 </x-m>
@@ -799,16 +941,16 @@
       <z-m> -0.797 </z-m>
     </center>
     <axis>
-      <x> 0.00 </x>
-      <y> 1.00 </y>
-      <z> 0.00 </z>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
   <animation>
     <type>rotate</type>
     <object-name>piedD</object-name>
-    <property>controls/flight/rudder</property>
+    <property>surface-positions/rudder-pos-norm</property>
     <factor> 20 </factor>
     <center>
       <x-m> -1.378 </x-m>
@@ -816,28 +958,28 @@
       <z-m> -0.797 </z-m>
     </center>
     <axis>
-      <x>  0.00 </x>
-      <y> -1.00 </y>
-      <z>  0.00 </z>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
   <animation>
     <type>translate</type>
     <object-name>cableAG</object-name>
-    <property>controls/flight/rudder</property>
+    <property>surface-positions/rudder-pos-norm</property>
     <factor> 0.02 </factor>
     <axis>
-      <x> -1.000 </x>
-      <y>  0.000 </y>
-      <z>  0.000 </z>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
   <animation>
     <type>translate</type>
     <object-name>cableBG</object-name>
-    <property>controls/flight/rudder</property>
+    <property>surface-positions/rudder-pos-norm</property>
     <factor> -0.02 </factor>
     <axis>
       <x> -0.179044 </x>
@@ -849,7 +991,7 @@
   <animation>
     <type>translate</type>
     <object-name>cableCG</object-name>
-    <property>controls/flight/rudder</property>
+    <property>surface-positions/rudder-pos-norm</property>
     <factor> 0.02 </factor>
     <axis>
       <x>  0.165402 </x>
@@ -861,19 +1003,19 @@
   <animation>
     <type>translate</type>
     <object-name>cableAD</object-name>
-    <property>controls/flight/rudder</property>
+    <property>surface-positions/rudder-pos-norm</property>
     <factor> 0.02 </factor>
     <axis>
-      <x> 1.000 </x>
-      <y> 0.000 </y>
-      <z> 0.000 </z>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
   <animation>
     <type>translate</type>
     <object-name>cableBD</object-name>
-    <property>controls/flight/rudder</property>
+    <property>surface-positions/rudder-pos-norm</property>
     <factor> 0.02 </factor>
     <axis>
       <x> -0.179044 </x>
@@ -885,7 +1027,7 @@
   <animation>
     <type>translate</type>
     <object-name>cableCD</object-name>
-    <property>controls/flight/rudder</property>
+    <property>surface-positions/rudder-pos-norm</property>
     <factor> -0.02 </factor>
     <axis>
       <x>  0.165402 </x>
@@ -926,9 +1068,9 @@
       <z-m> -0.790 </z-m>
     </center>
     <axis>
-      <x> -1.00 </x>
-      <y>  0.00 </y>
-      <z>  0.00 </z>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
@@ -963,9 +1105,9 @@
       <z-m> -0.790 </z-m>
     </center>
     <axis>
-      <x> 1.00 </x>
-      <y> 0.00 </y>
-      <z> 0.00 </z>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
@@ -977,17 +1119,17 @@
     <object-name>axeA2</object-name>
     <object-name>axeA3</object-name>
     <object-name>axeA4</object-name>
-    <property>controls/flight/rudder</property>
-    <factor>  20 </factor>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 20 </factor>
     <center>
       <x-m> -1.507 </x-m>
       <y-m>  0.000 </y-m>
       <z-m> -0.867 </z-m>
     </center>
     <axis>
-      <x>  0.000 </x>
-      <y>  0.000 </y>
-      <z> -1.000 </z>
+      <x>  0 </x>
+      <y>  0 </y>
+      <z> -1 </z>
     </axis>
   </animation>
 
@@ -1003,9 +1145,9 @@
       <z-m> -1.095 </z-m>
     </center>
     <axis>
-      <x>  0.000 </x>
-      <y> -1.000 </y>
-      <z>  0.000 </z>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
@@ -1020,9 +1162,9 @@
       <z-m> -1.096 </z-m>
     </center>
     <axis>
-      <x>  0.000 </x>
-      <y> -1.000 </y>
-      <z>  0.000 </z>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
@@ -1037,9 +1179,9 @@
       <z-m> -1.096 </z-m>
     </center>
     <axis>
-      <x>  0.000 </x>
-      <y> -1.000 </y>
-      <z>  0.000 </z>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
@@ -1054,126 +1196,9 @@
       <z-m> -0.972 </z-m>
     </center>
     <axis>
-      <x>  0.000 </x>
-      <y> -1.000 </y>
-      <z>  0.000 </z>
-    </axis>
-  </animation>
-
-  <!-- Anmations du pilote -->
-  <animation>
-    <type>translate</type>
-    <object-name>avantbrasG</object-name>
-    <object-name>mainG</object-name>
-    <property>/controls/engines/engine[0]/throttle</property>
-    <factor> 0.10 </factor>
-    <axis>
-      <x> -1.000 </x>
-      <y>  0.000 </y>
-      <z>  0.000 </z>
-    </axis>
-  </animation>
-
-  <!-- Manette moteur -->
-  <animation>
-    <type>rotate</type>
-    <object-name>brasG</object-name>
-    <property>/controls/engines/engine[0]/throttle</property>
-    <factor> 20.15 </factor>
-    <center>
-      <x-m> -0.464 </x-m>
-      <y-m> -0.178 </y-m>
-      <z-m>  0.037 </z-m>
-    </center>
-    <axis>
-      <x> 0.000 </x>
-      <y> 1.000 </y>
-      <z> 0.000 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>piedgauche</object-name>
-    <property>controls/flight/rudder</property>
-    <factor> 20 </factor>
-    <center>
-      <x-m> -1.250 </x-m>
-      <y-m> -0.153 </y-m>
-      <z-m> -0.691 </z-m>
-    </center>
-    <axis>
-      <x> 0.00 </x>
-      <y> 1.00 </y>
-      <z> 0.00 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>pieddroit</object-name>
-    <property>controls/flight/rudder</property>
-    <factor> 20 </factor>
-    <center>
-      <x-m> -1.250 </x-m>
-      <y-m>  0.153 </y-m>
-      <z-m> -0.691 </z-m>
-    </center>
-    <axis>
-      <x>  0.00 </x>
-      <y> -1.00 </y>
-      <z>  0.00 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>tete</object-name>
-    <property>controls/flight/rudder</property>
-    <factor> 20 </factor>
-    <center>
-      <x-m> -0.445 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m>  0.234 </z-m>
-    </center>
-    <axis>
-      <x>  0.00 </x>
-      <y>  0.00 </y>
-      <z> -1.00 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>tete</object-name>
-    <property>rotors/main/tilt/roll-deg</property>
-    <factor> 1 </factor>
-    <center>
-      <x-m> -0.445 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m>  0.234 </z-m>
-    </center>
-    <axis>
-      <x> 1.000 </x>
-      <y> 0.000 </y>
-      <z> 0.000 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>tete</object-name>
-    <property>rotors/main/tilt/pitch-deg</property>
-    <factor> -1 </factor>
-    <center>
-      <x-m> -0.445 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m>  0.234 </z-m>
-    </center>
-    <axis>
-      <x>  0.000 </x>
-      <y> -1.000 </y>
-      <z>  0.000 </z>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
