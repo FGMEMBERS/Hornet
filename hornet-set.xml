@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <PropertyList include="hornet-jsbsim-cnf.xml"> -->
+<PropertyList include="hornet-yasim-cnf.xml">
+
+  <sim>
+    <description>Autogiro Hornet (YASim)</description>
+    <author>Emmanuel Baranger, Don Shoebridge, Maik Justus (FDM)</author>
+  </sim>
+
+</PropertyList>
+

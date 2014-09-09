@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim include="Nasal/views.xml">
+ 
+    <author>BARANGER Emmanuel (3D), SHOEBRIDGE Don (3D), JUSTUS Maik (FDM)</author>
+    <aircraft-version>0.1</aircraft-version>
+    <status>Alpha</status>
+   
+    <fuel-fraction>0.8</fuel-fraction>
+  
+    <startup>
+      <splash-texture>Aircraft/Hornet/hornet-splash.png</splash-texture>
+      <splash-title>http://www.gdt-systems.com</splash-title>
+    </startup>
+
+    <sound>
+      <path>Aircraft/Hornet/Sounds/hornet-sound.xml</path>
+    </sound>
+
+    <model>
+      <path>Aircraft/Hornet/Models/hornet.xml</path>
+      <livery>
+        <file type="string">default</file>
+      </livery>
+      <hornet>
+        <rotor-step-deg type="float">-1.0</rotor-step-deg>
+      </hornet>
+    </model>
+
+    <multiplay>
+      <chat_display>1</chat_display>
+      <generic>
+        <int type="int" n="0">0</int>
+        <int type="int" n="1">0</int>
+        <int type="int" n="2">0</int>
+        <int type="int" n="3">0</int>
+        <int type="int" n="4">0</int>
+        <int type="int" n="5">0</int>
+      </generic>
+    </multiplay>
+
+    <help>
+      <title>Hornet (Autogyro)</title>
+      <line></line> 
+      <line>http://www.gdt-systems.com/</line>
+      <line></line> 
+      <key>
+        <name>n</name>
+        <desc>accelerate rotor (by hand!)</desc>
+      </key>
+      <line>   Startup Procedure</line>
+      <line>1:Accelerate the rotor by hand ('n'-key)</line>
+      <line>2:Set magneto switch to ' both '('}'-Key)</line>
+      <line>3:Start engine (S-Key)</line>
+      <line>4:Release parking-brake ('B'-key)</line>
+      <line>5:Full power</line>
+      <line>6:Wait for the rotor to reach sufficient rpm (~300)</line>
+      <line>(The rotor accelerates faster if you pull the stick)</line>
+    </help>
+
+    <menubar include="Dialogs/hornet-menu.xml"/>
+
+  </sim>
+
+  <input>
+    <keyboard include="Nasal/hornet-keyboard.xml"/>
+  </input>
+
+  <controls>
+    <engines>
+      <engine n="0">
+        <magnetos>3</magnetos>
+      </engine>
+    </engines>
+    <rotor>
+      <handstart type="int">0</handstart>
+      <reltarget type="float">0</reltarget>
+    </rotor>
+    <gear>
+      <brake-parking>1</brake-parking>
+    </gear>
+    <lighting>
+      <strobe type="bool">true</strobe>
+      <beacon type="bool">true</beacon>
+      <nav-lights type="bool">true</nav-lights>
+    </lighting>
+  </controls>
+
+  <rotors>
+    <main>
+      <rpm type="double">0</rpm>
+    </main>
+  </rotors>
+
+  <nasal>
+    <hornet>
+      <file>Aircraft/Hornet/Nasal/hornet.nas</file>
+      <file>Aircraft/Hornet/Nasal/liveries.nas</file>
+    </hornet>
+  </nasal>
+
+</PropertyList>
+

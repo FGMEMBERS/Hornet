@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>pilot.ac</path>
+
+  <animation>
+    <object-name>tete</object-name>
+    <object-name>visiere</object-name>
+    <object-name>torse</object-name>
+    <object-name>brasG</object-name>
+    <object-name>brasD</object-name>
+    <object-name>avantbrasG</object-name>
+    <object-name>avantbrasD</object-name>
+    <object-name>mainG</object-name>
+    <object-name>mainD</object-name>
+    <object-name>cuisseG</object-name>
+    <object-name>cuisseD</object-name>
+    <object-name>jambeG</object-name>
+    <object-name>jambeD</object-name>
+    <object-name>piedgauche</object-name>
+    <object-name>pieddroit</object-name>
+  </animation>
+
+  <!-- Anmations du pilote -->
+  <animation>
+    <type>translate</type>
+    <object-name>avantbrasG</object-name>
+    <object-name>mainG</object-name>
+    <property>controls/engines/engine[0]/throttle</property>
+    <factor> 0.10 </factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <!-- Manette moteur -->
+  <animation>
+    <type>rotate</type>
+    <object-name>brasG</object-name>
+    <property>controls/engines/engine[0]/throttle</property>
+    <factor> 20.15 </factor>
+    <center>
+      <x-m> -0.464 </x-m>
+      <y-m> -0.178 </y-m>
+      <z-m>  0.037 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>piedgauche</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 20 </factor>
+    <center>
+      <x-m> -1.250 </x-m>
+      <y-m> -0.153 </y-m>
+      <z-m> -0.691 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>pieddroit</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 20 </factor>
+    <center>
+      <x-m> -1.250 </x-m>
+      <y-m>  0.153 </y-m>
+      <z-m> -0.691 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <name>AllHead</name>
+    <object-name>tete</object-name>
+    <object-name>visiere</object-name>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>AllHead</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 20 </factor>
+    <center>
+      <x-m> -0.445 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.234 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y>  0 </y>
+      <z> -1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>AllHead</object-name>
+    <property>rotors/main/tilt/roll-deg</property>
+    <factor> 1 </factor>
+    <center>
+      <x-m> -0.445 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.234 </z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>AllHead</object-name>
+    <property>rotors/main/tilt/pitch-deg</property>
+    <factor> -1 </factor>
+    <center>
+      <x-m> -0.445 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.234 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
+
